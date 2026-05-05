@@ -1,9 +1,11 @@
 - [Overview](#overview)
-- [](#section)
 - [Download BAM maps](#download-bam-maps)
 - [References](#references)
 
 # Overview
+
+This document shows the process of downloading BAM v5 maps for BCR 6
+South and processing the rasters to create exposure metrics.
 
 <style type="text/css">
 pre {
@@ -14,8 +16,6 @@ pre[class] {
   max-height: 100px;
 }
 </style>
-
-# 
 
 # Download BAM maps
 
@@ -59,6 +59,11 @@ abmi_bam <- spp_table_v5 |> filter(scientificName %in% abmi_birds$ScientificName
 
 Finally, download the maps for BCR 6.1 and send to the ‘bam_v5_maps’
 folder.
+
+``` r
+# Download the maps and store in teh bam_v5_maps folder
+bam_get_layer(spList = abmi_bam$speciesCode, version = "v5", destfile = "0_data/bam_v5_maps", year = 2020, bcrNM = "can61")
+```
 
 # References
 

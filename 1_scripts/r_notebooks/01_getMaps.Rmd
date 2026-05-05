@@ -42,5 +42,8 @@ Finally, download the maps for BCR 6.1 and send to the 'bam_v5_maps' folder.
 
 ```{r, eval=FALSE, warning=FALSE, message=FALSE}
 
+# Download the maps and store in teh bam_v5_maps folder
+bam_get_layer(spList = abmi_bam$speciesCode, version = "v5", destfile = "0_data/bam_v5_maps", year = 2020, bcrNM = "can61")
+
 ```
 
