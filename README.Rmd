@@ -70,3 +70,6 @@ Use `1_code/r_notebooks/path.Rmd`.
 
 
 
+
+<!--chapter:end:index.Rmd-->
+

@@ -1,10 +1,6 @@
 
 library(BAMexploreR)
 
-# source("1_scripts/functions/bamexplorer.R")
-# source("1_scripts/functions/utils.R")
-
-# load("0_data/sysdata.rda")
 
 # Get the spp. table from the BAMexploreR package 
 spp_tbl <- read.csv("0_data/spp_List.csv")
