@@ -1,0 +1,16 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+## This section shows the process of downloading the BAM maps for BCR 6S and saving them to a folder. 
+
+
+First, install (if not) and load the BAMexploreR library. 
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+library(BAMexploreR)
+
+```
+
+
