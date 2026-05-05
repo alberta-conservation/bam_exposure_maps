@@ -26,22 +26,36 @@ and saving them to a folder.
 
 First, install (if necessary) and load the BAMexploreR library.
 
+``` r
+# install.packages("remotes")
+remotes::install_github("borealbirds/BAMexploreR")
+
+library(BAMexploreR)
+```
+
 Next, load the BAM species table and the v5 and ABMI bird species lists.
 Then filter for speices that are present in both lists.
 
-    ##   [1]   1   2   3   4   5   6   8   9  10  11  12  13  14  15  16  17  18  19
-    ##  [19]  20  21  22  23  24  26  27  28  29  31  32  33  34  35  37  38  39  40
-    ##  [37]  41  42  43  44  45  46  47  48  50  51  52  53  54  55  56  57  58  62
-    ##  [55]  63  65  66  69  70  71  72  73  74  75  76  77  78  79  80  81  82  83
-    ##  [73]  84  85  87  88  89  90  91  92  94  95  97  99 100 101 102 103 104 105
-    ##  [91] 106 107 108 111 112 115 116 117 118 119 120 121 122 123 124
+``` r
+# Get the spp. table from the BAMexploreR package 
+spp_tbl <- read.csv("0_data/spp_List.csv")
 
-    ##   [1]   1   2   3   5   6   7   9  10  11  12  14  15  17  18  20  21  22  23
-    ##  [19]  25  26  28  29  30  31  32  33  34  35  36  37  38  40  41  42  43  44
-    ##  [37]  45  48  49  52  53  55  56  59  60  61  64  65  67  68  69  70  72  74
-    ##  [55]  77  78  79  81  82  84  86  88  89  90  91  92  93  94  96  98 100 101
-    ##  [73] 102 103 104 105 107 108 109 111 112 113 115 116 117 118 121 122 123 125
-    ##  [91] 126 127 128 129 130 131 132 134 135 136 138 139 140 141 142
+# Get the spp. list from the v5 BAM models
+spp_v5 <- bam_spp_list("v5")
+
+# Get the list of bird species for which ABMI has models
+abmi_birds <- readRDS("0_data/abmiBirdList.rds")
+
+# Only use birds from the BAM v5 list that are in the ABMI bird models. 
+
+which(abmi_birds$ScientificName %in% spp_tbl$scientificName)
+
+which(spp_tbl$scientificName %in% abmi_birds$ScientificName)
+
+spp_table_v5 <- spp_tbl |> filter(speciesCode %in% spp_v5)
+
+abmi_bam <- spp_table_v5 |> filter(scientificName %in% abmi_birds$ScientificName)
+```
 
 Finally, download the maps for BCR 6.1 and send to the ‘bam_v5_maps’
 folder.
